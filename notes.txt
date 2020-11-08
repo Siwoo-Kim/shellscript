@@ -1,0 +1,19 @@
+this
+this is test
+Sun 08 Nov 2020 08:54:30 AM EST: this is test
+Sun 08 Nov 2020 08:55:28 AM EST : this is test
+Sun 08 Nov 2020 09:00:02 AM EST: note note note
+Sun 08 Nov 2020 09:14:19 AM EST: 
+Sun 08 Nov 2020 09:14:21 AM EST: test
+Sun 08 Nov 2020 09:55:12 AM EST: test
+Sun 08 Nov 2020 09:55:28 AM EST: d
+Sun 08 Nov 2020 09:55:43 AM EST: test
+Sun 08 Nov 2020 09:55:59 AM EST: hhbk
+Sun 08 Nov 2020 09:56:31 AM EST: this contains string
+Sun 08 Nov 2020 09:56:47 AM EST: this
+Sun 08 Nov 2020 09:57:32 AM EST: k/kkk\k
+Sun 08 Nov 2020 09:57:44 AM EST: kkkkkk
+Sun 08 Nov 2020 09:57:54 AM EST: nnn
+Sun 08 Nov 2020 09:58:08 AM EST: \n\n\n
+Sun 08 Nov 2020 10:00:02 AM EST: No note. terminate
+Sun 08 Nov 2020 10:00:16 AM EST: that's a nice prompt
