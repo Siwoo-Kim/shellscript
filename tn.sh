@@ -22,19 +22,41 @@
 #   read => 유저로부터 데이터를 읽어 변수에 저장.
 #       -r => 백스페이스 escape 을 방지
 
+#Quote  ""
+# 항상 변수를 quotes 로 감싸라
+#   => space 가 있을 경우 split 을 방지.
+#   => '' 은 $ 도 escape 하므로 사용하지 말 것.
+#   => ~ 은 escape 하므로 ${HOME} 을 사용.
+
+#Braces {}
+# 배쉬에게 문자열 어디서 변수가 끝나는 지를 알려줌.
+# echo "${foo}bar"
+  
+
+#Debugging
+# line debugging =>  set -x, set +x
+# global debugging => #!/bin/bash -x
 
 ask() {
   read -rp "Your note: " note
-  [[ ! $note ]] && { echo "No note. terminate"; exit 1; } 
+  [[ ! $note ]] && {
+    echo "No note. terminate"
+    exit 1
+  }
   echo "$note"
 }
 
-type tn >/dev/null 2>&1 && { echo "script already exists"; exit 1; }
+type tn >/dev/null 2>&1 && {
+  echo "script already exists"
+  exit 1
+}
 
 workdir=.
+topic="$@"
+topic="${topic:=default}"
 now=$(date)
 note=$(ask)
-notefile="$workdir"/notes.txt
+notefile="${workdir}/${topic}-notes.txt"
 
-echo "$now": "$note" >>"$notefile"
-echo Note saved: "$note"
+echo "${now}: ${note}" >> "$notefile"
+echo "Note '${note}' saved to ${notefile}"
