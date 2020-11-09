@@ -26,23 +26,21 @@
 # 항상 변수를 quotes 로 감싸라
 #   => space 가 있을 경우 split 을 방지.
 #   => '' 은 $ 도 escape 하므로 사용하지 말 것.
-#   => ~ 은 escape 하므로 ${HOME} 을 사용.
+#   => ~ 은 escape 되므로 ${HOME} 을 사용.
 
 #Braces {}
 # 배쉬에게 문자열 어디서 변수가 끝나는 지를 알려줌.
 # echo "${foo}bar"
   
-
 #Debugging
 # line debugging =>  set -x, set +x
 # global debugging => #!/bin/bash -x
 
 ask() {
   read -rp "Your note: " note
-  [[ ! $note ]] && {
-    echo "No note. terminate"
+  if [[ ! $note ]]; then
     exit 1
-  }
+  fi
   echo "$note"
 }
 
@@ -55,7 +53,11 @@ workdir=.
 topic="$@"
 topic="${topic:=default}"
 now=$(date)
-note=$(ask)
+
+note=$(ask) || {
+  echo "No note. terminate"
+  exit 1
+}
 notefile="${workdir}/${topic}-notes.txt"
 
 echo "${now}: ${note}" >> "$notefile"

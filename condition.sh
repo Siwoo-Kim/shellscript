@@ -10,6 +10,15 @@
 #   2. tests on strings.      [[ $str ]], [[ $str == bash pattern ]]
 #   3. tests on arithmetic exp   [[ num1 -eq num2 ]] (이거 쓰지말고 (()) 요거 쓰세요)
 
+# And, Or, Not
+# ! => negate !0  = 1 
+# && => AND   0 && 1  = 0
+# || => OR    0 || 1  = 1
+# Special variable
+# 1. $# -> args 갯수
+# 2. $? -> 마지막 command status
+# 3. ${#var} -> 변수 var  문자열 크기 (parameter expansion)
+
 #세미콜론
 #   한 줄에 여러 명령어 사용시 ; 로 구분자로 사용.
 #   그렇지 않다면 new line 에 각 명령어를 명시.
@@ -18,7 +27,6 @@
 #   프로그램에 의해 반환되는 exit 번.호
 #   0 = success, others = fail
  
-
 #my_mkdir() {
 #  dir=./"$1"
 #  if mkdir "$dir"; then #depends on mkdir's exit code. 0 is success
