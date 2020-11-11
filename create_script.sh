@@ -11,12 +11,12 @@
 # 뭐가 best practice 인지.........
 check() {
   if [[ ! $1 ]]; then
-    echo Missing arg
+    echo "Missing arg" >&2
     return 1
   fi
 
-  if type "$1" > /dev/null 2>&1; then #redirect stderr to /dev/null
-    echo "There is already a command with name ${1}"
+  if type "$1" >/dev/null 2>&1; then #redirect stdin & stderr to /dev/null
+    echo "There is already a command with name ${1}" >&2
     return 1
   fi
   return 0
@@ -36,17 +36,18 @@ create_script() {
   local filename="${bindir}/${script}"
 
   [[ -e $filename ]] && {
-    echo "File ${filename} already exists"
+    echo "File ${filename} already exists" >&2
     return 1
   }
 
   if [[ ! -d ${bindir} ]]; then
     mkdir ${bindir} || {
-      echo "Couldn't create ${bindir}."
+      echo "Couldn't create ${bindir}." >&2
       return 1
     }
     echo "Create ${bindir} to save the script ${script}"
   fi
+  echo "$script"
   file="$filename"
 }
 

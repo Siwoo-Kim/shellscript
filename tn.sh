@@ -55,7 +55,7 @@ topic="${topic:=default}"
 now=$(date)
 
 note=$(ask) || {
-  echo "No note. terminate"
+  echo "No note. terminate" >&2
   exit 1
 }
 notefile="${workdir}/${topic}-notes.txt"
