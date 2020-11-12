@@ -49,10 +49,12 @@ type tn >/dev/null 2>&1 && {
   exit 1
 }
 
-workdir=.
+declare -r workdir=.
+declare -r now=$(date)
+
 topic="$@"
 topic="${topic:=default}"
-now=$(date)
+
 
 note=$(ask) || {
   echo "No note. terminate" >&2
