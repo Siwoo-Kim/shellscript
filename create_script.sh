@@ -51,16 +51,19 @@ create_script() {
   file="$filename"
 }
 
-check "$@" || exit 1
-scriptname=$(get_scriptname "$1")
-
-export file=
-create_script "$scriptname" || {
-  exit 1
-}
-
-echo "#!/bin/bash" > "$file"
-chmod u+x "$file"
+while [[ $1 ]]; do
+  check "$@" || exit 1
+  scriptname=$(get_scriptname "$1")
+  
+  export file=
+  create_script "$scriptname" || {
+    exit 1
+  }
+  
+  echo "#!/bin/bash" > "$file"
+  chmod u+x "$file"
+  shift   #shift arg by 1
+done
 
 editor=$EDITOR
 ${editor:=vim}
