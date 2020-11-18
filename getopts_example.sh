@@ -29,6 +29,12 @@
 # getopts 에러 핸들링
 #   silent 모드 (optstring 에 : 로 시작), non-silent 모드
 #
+# End of options
+# -- (명령어 인자 중 -- 이후의 인자는 option 으로 인지 안됨)
+#   인자값이 -l.txt 라고 가정하자.
+#   command shell 은 -l 을 보고 옵션이라 가정한다.
+#   이럴때 -- 을 쉘에 제공하면 -l.txt 가 옵션이 아닌지를 판단하고 제대로 처리한다. 
+#   * 특히 파일은 - 가 들어간 경우가 많으므로 -- 을 잘 사용하자.
 
 
 declare r=

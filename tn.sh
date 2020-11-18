@@ -53,14 +53,13 @@ declare -r workdir=.
 declare -r now=$(date)
 
 topic="$@"
-topic="${topic:=default}"
-
+topic="${topic:=default}" #parameter expansion - assign default value
 
 note=$(ask) || {
   echo "No note. terminate" >&2
   exit 1
 }
-notefile="${workdir}/${topic}-notes.txt"
+notefile="${workdir}/${topic:-default}-notes.txt" #parameter expansion - evaluate default value
 
 echo "${now}: ${note}" >> "$notefile"
 echo "Note '${note}' saved to ${notefile}"
